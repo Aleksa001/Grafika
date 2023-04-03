@@ -1,0 +1,54 @@
+﻿<Window x:Class="Projekat1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="1280">
+    <DockPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="0" Height="550">
+            <Ellipse x:Name="ElNodes" Height="10" Width="10" Fill="Yellow" Visibility="Hidden" />
+            <Label x:Name="Nodes" Content="Nodes" Foreground="Yellow" FontWeight="Bold"  Height="30" Visibility="Hidden" HorizontalContentAlignment="Center"/>
+            <Ellipse x:Name="ElSwitches" Height="10" Width="10" Fill="Green" Visibility="Hidden"/>
+            <Label x:Name="Switches" Content="Switches" Foreground="Green" FontWeight="Bold" Height="30" Visibility="Hidden" HorizontalContentAlignment="Center"/>
+            <Ellipse x:Name="ElSubstations" Height="10" Width="10" Fill="Blue" Visibility="Hidden"/>
+            <Label x:Name="Substations" Content="Substations" Foreground="Blue" FontWeight="Bold" Height="30" Visibility="Hidden" HorizontalContentAlignment="Center"/>
+            <Slider x:Name="Slider" Minimum="0" Maximum="15" Value="1" DockPanel.Dock="Top" />
+        </StackPanel>
+        <Grid >
+
+            <DockPanel Height="40" VerticalAlignment="Top" Margin="10,0">
+
+                <Button x:Name="LoadButton" Content="Load" Click="LoadButton_Click" Width="150" Height="30" Margin="5"/>
+                <Label/>
+                <Button x:Name="ClearBtn" Content="Clear" Click="Clear_Click" Width="150" Height="30" Margin="5"/>
+                <Label/>
+                <Button x:Name="EllipseBtn" Content="Ellipse" Click="CreateElipse_Click" Width="150" Height="30" Margin="5"/>
+                <Label/>
+                <Button x:Name="PolygonBtn" Content="Polygon" Click="CreatePolygon_Click" Width="150" Height="30" Margin="5"/>
+                <Label/>
+                <Button x:Name="TextBtn" Content="Text" Click="TextBtn_Click" Width="150" Height="30" Margin="5"/>
+                <Label/>
+                <Button x:Name="UndoBtn" Content="Undo" Click="UndoBtn_Click"  Width="150" Height="30" Margin="5"/>
+                <Label/>
+                <Button x:Name="RedoBtn" Content="Redo" Click="RedoBtn_Click"  Width="150" Height="30" Margin="5"/>
+            </DockPanel>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,40,7,0">
+                <Border BorderThickness="1.5" BorderBrush="LightSlateGray" >
+                    <Canvas x:Name="canvas" Height="600" Width="900" MouseDown="canvas_MouseDown" MouseLeftButtonDown="canvas_MouseLeftButtonDown" MouseRightButtonDown="canvas_MouseRightButtonDown" 
+                         
+                         Background="White">
+                    <Canvas.LayoutTransform>
+                        <ScaleTransform ScaleX="{Binding ElementName=Slider, Path=Value}" ScaleY="{Binding ElementName=Slider, Path=Value}"/>
+                    </Canvas.LayoutTransform>
+                 </Canvas>
+                </Border>
+                 
+            </ScrollViewer>
+           
+        </Grid>
+        
+    </DockPanel>
+   
+</Window>
